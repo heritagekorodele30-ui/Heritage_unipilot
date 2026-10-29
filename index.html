@@ -230,6 +230,31 @@ html[data-theme="dark"] .btn-secondary { color:#ffffff !important; }
 </style>
 
   <link rel="stylesheet" href="site-navigation.css">
+
+<style id="uni-pilot-homepage-mobile-overflow-fix">
+  /* Keep the homepage within the phone viewport; prevent sideways page panning. */
+  html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+  header, main, footer, .welcome-section, .platform-intro {
+    max-width: 100%;
+  }
+  img, video, iframe, canvas, svg {
+    max-width: 100%;
+  }
+  @supports not (overflow: clip) {
+    html, body { overflow-x: hidden; }
+  }
+</style>
 </head>
 
 
