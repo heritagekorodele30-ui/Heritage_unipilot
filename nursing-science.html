@@ -1,1815 +1,322 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nursing Science | Uni Pilot</title>
-
-<link rel="stylesheet" href="style.css">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nursing Science | AAUA Uni Pilot</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem("uniPilotTheme") || "light";
+    var dark = saved === "dark" || (saved === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    document.documentElement.dataset.themeChoice = ["light", "dark", "system"].includes(saved) ? saved : "light";
+  } catch (e) {
+    document.documentElement.dataset.theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+})();
+</script>
 <style>
-
-/* =========================================================
-   DEPARTMENT PAGE
-   GREEN THEME — NO BLUE
-========================================================= */
-
-:root {
-  --green: #0b5d3b;
-  --dark-green: #063b26;
-  --light-green: #eaf6ef;
-  --yellow: #f5c518;
-  --light-yellow: #fff8dc;
-  --white: #ffffff;
-  --background: #f7faf8;
-  --text: #17221c;
-  --muted: #6d7a72;
-  --border: #dfe8e2;
+:root{
+  --green:#0b5d3b;
+  --dark-green:#063b26;
+  --light-green:#eaf6ef;
+  --yellow:#f5c518;
+  --white:#ffffff;
+  --background:#f7faf8;
+  --text:#17221c;
+  --muted:#6d7a72;
+  --border:#dfe8e2;
+  --soft:#fbfdfb;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",Arial,Helvetica,sans-serif;background:var(--background);color:var(--text)}
+a{color:inherit;text-decoration:none}
+button,input{font-family:inherit}
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
-  color: var(--text);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.department-page {
-  min-height: 100vh;
-
+.department-page{
+  min-height:100vh;
   background:
-    radial-gradient(
-      circle at 10% 10%,
-      rgba(11, 93, 59, 0.08),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(11, 93, 59, 0.06),
-      transparent 30%
-    ),
-
+    radial-gradient(circle at top right,rgba(11,93,59,.06),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(245,197,24,.045),transparent 30%),
     var(--background);
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.department-hero {
-
-  position: relative;
-
-  overflow: hidden;
-
-  padding: 80px 20px 110px;
-
-  color: var(--white);
-
+/* HERO */
+.department-hero{
+  position:relative;overflow:hidden;
   background:
-    linear-gradient(
-      135deg,
-      var(--dark-green),
-      var(--green),
-      var(--dark-green)
-    );
-}
-
-.department-hero::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  border-radius: 50%;
-
-  background: rgba(11, 93, 59, 0.35);
-
-  top: -220px;
-  right: -120px;
-}
-
-.department-hero::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 300px;
-  height: 300px;
-
-  border-radius: 50%;
-
-  background: rgba(11, 93, 59, 0.20);
-
-  bottom: -170px;
-  left: -100px;
-}
-
-.department-hero-content {
-
-  position: relative;
-
-  z-index: 2;
-
-  width: min(1150px, 100%);
-
-  margin: auto;
-}
-
-.breadcrumb {
-
-  display: flex;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  gap: 9px;
-
-  margin-bottom: 30px;
-
-  font-size: 14px;
-
-  color: rgba(255,255,255,0.75);
-}
-
-.breadcrumb a {
-
-  color: var(--white);
-
-  transition: color 0.2s ease;
-}
-
-.breadcrumb a:hover {
-
-  color: var(--yellow);
-}
-
-.department-label {
-
-  display: inline-block;
-
-  padding: 8px 15px;
-
-  margin-bottom: 18px;
-
-  border: 1px solid rgba(255,255,255,0.25);
-
-  border-radius: 30px;
-
-  background: rgba(255,255,255,0.10);
-
-  color: var(--yellow);
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-}
-
-.department-hero h1 {
-
-  max-width: 900px;
-
-  margin-bottom: 12px;
-
-  font-size: clamp(38px, 6vw, 68px);
-
-  line-height: 1.05;
-}
-
-.department-hero .faculty-name {
-
-  margin-bottom: 22px;
-
-  color: var(--yellow);
-
-  font-size: 20px;
-
-  font-weight: 700;
-}
-
-.department-hero-description {
-
-  max-width: 850px;
-
-  margin-bottom: 30px;
-
-  color: rgba(255,255,255,0.82);
-
-  font-size: 17px;
-
-  line-height: 1.8;
-}
-
-.department-actions {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 12px;
-}
-
-.department-action {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 48px;
-
-  padding: 0 20px;
-
-  border-radius: 10px;
-
-  font-weight: 700;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.department-action:hover {
-
-  transform: translateY(-2px);
-}
-
-.department-action.primary {
-
-  background: var(--yellow);
-
-  color: var(--dark-green);
-}
-
-.department-action.primary:hover {
-
-  background: #e6b600;
-}
-
-.department-action.secondary {
-
-  border: 1px solid rgba(255,255,255,0.30);
-
-  background: rgba(255,255,255,0.08);
-
-  color: var(--white);
-}
-
-.department-action.secondary:hover {
-
-  background: rgba(255,255,255,0.16);
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.department-main {
-
-  width: min(1150px, calc(100% - 40px));
-
-  margin: -55px auto 70px;
-
-  position: relative;
-
-  z-index: 5;
-}
-
-
-/* =========================================================
-   QUICK INFO
-========================================================= */
-
-.quick-info {
-
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 15px;
-
-  margin-bottom: 50px;
-}
-
-.quick-card {
-
-  min-height: 145px;
-
-  padding: 24px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 16px;
-
-  background: var(--white);
-
-  box-shadow: 0 12px 35px rgba(6,59,38,0.08);
-}
-
-.quick-icon {
-
-  width: 45px;
-  height: 45px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 15px;
-
-  border-radius: 12px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 20px;
-}
-
-.quick-card span {
-
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-}
-
-.quick-card strong {
-
-  display: block;
-
-  color: var(--text);
-
-  font-size: 16px;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.department-section {
-
-  margin-bottom: 55px;
-}
-
-.section-heading {
-
-  margin-bottom: 22px;
-}
-
-.section-heading span {
-
-  display: block;
-
-  margin-bottom: 7px;
-
-  color: var(--green);
-
-  font-size: 13px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-}
-
-.section-heading h2 {
-
-  font-size: clamp(27px, 4vw, 38px);
-
-  color: var(--text);
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-box {
-
-  padding: 30px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  box-shadow: 0 10px 30px rgba(6,59,38,0.05);
-}
-
-.about-box p {
-
-  color: var(--muted);
-
-  font-size: 16px;
-
-  line-height: 1.85;
-}
-
-
-/* =========================================================
-   PROGRAMMES
-========================================================= */
-
-.programme-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
-}
-
-.programme-card {
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.programme-card:hover {
-
-  transform: translateY(-4px);
-
-  border-color: var(--green);
-
-  background: var(--light-green);
-}
-
-.programme-icon {
-
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 14px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 22px;
-}
-
-.programme-card h3 {
-
-  margin-bottom: 10px;
-
-  color: var(--text);
-
-  font-size: 20px;
-}
-
-.programme-card p {
-
-  color: var(--muted);
-
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   COURSES
-========================================================= */
-
-.courses-box {
-
-  display: grid;
-
-  gap: 14px;
-}
-
-.level-card {
-
-  overflow: hidden;
-
-  border: 1px solid var(--border);
-
-  border-radius: 15px;
-
-  background: var(--white);
-}
-
-.level-button {
-
-  width: 100%;
-
-  padding: 20px 22px;
-
-  border: none;
-
-  background: var(--white);
-
-  color: var(--text);
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  font-size: 17px;
-
-  font-weight: 700;
-
-  text-align: left;
-}
-
-.level-button:hover {
-
-  background: var(--light-green);
-}
-
-.level-arrow {
-
-  color: var(--green);
-
-  transition: transform 0.2s ease;
-}
-
-.level-card.active .level-arrow {
-
-  transform: rotate(180deg);
-}
-
-.course-list {
-
-  display: none;
-
-  border-top: 1px solid var(--border);
-}
-
-.level-card.active .course-list {
-
-  display: block;
-}
-
-.course-row {
-
-  display: grid;
-
-  grid-template-columns: 150px 1fr 90px;
-
-  gap: 15px;
-
-  padding: 17px 22px;
-
-  border-bottom: 1px solid var(--border);
-
-  color: var(--muted);
-}
-
-.course-row:last-child {
-
-  border-bottom: none;
-}
-
-.course-code {
-
-  color: var(--green);
-
-  font-weight: 700;
-}
-
-.course-unit {
-
-  text-align: right;
-
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   RESOURCES
-========================================================= */
-
-.resource-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 20px;
-}
-
-.resource-card {
-
-  display: block;
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.resource-card:hover {
-
-  transform: translateY(-4px);
-
-  border-color: var(--green);
-
-  background: var(--light-green);
-}
-
-.resource-icon {
-
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 14px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-
-  font-size: 22px;
-}
-
-.resource-card h3 {
-
-  margin-bottom: 9px;
-
-  color: var(--text);
-}
-
-.resource-card p {
-
-  color: var(--muted);
-
-  line-height: 1.6;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-grid {
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
-}
-
-.contact-card {
-
-  padding: 28px;
-
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
-
-  background: var(--white);
-}
-
-.contact-card h3 {
-
-  margin-bottom: 22px;
-
-  color: var(--text);
-}
-
-.contact-item {
-
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 13px;
-
-  margin-bottom: 18px;
-}
-
-.contact-item:last-child {
-
-  margin-bottom: 0;
-}
-
-.contact-item-icon {
-
-  width: 40px;
-  height: 40px;
-
-  flex: 0 0 40px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-
-  background: var(--light-green);
-
-  color: var(--green);
-}
-
-.contact-item span {
-
-  display: block;
-
-  margin-bottom: 4px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-}
-
-.contact-item strong {
-
-  color: var(--text);
-
-  line-height: 1.5;
-}
-
-
-/* =========================================================
-   HELP
-========================================================= */
-
-.help-box {
-
-  padding: 45px 30px;
-
-  border-radius: 20px;
-
-  background: var(--dark-green);
-
-  color: var(--white);
-
-  text-align: center;
-}
-
-.help-box h2 {
-
-  margin-bottom: 12px;
-
-  font-size: 30px;
-}
-
-.help-box p {
-
-  max-width: 650px;
-
-  margin: 0 auto 25px;
-
-  color: rgba(255,255,255,0.78);
-
-  line-height: 1.7;
-}
-
-.help-button {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  min-height: 48px;
-
-  padding: 0 22px;
-
-  border-radius: 10px;
-
-  background: var(--yellow);
-
-  color: var(--dark-green);
-
-  font-weight: 800;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.help-button:hover {
-
-  background: #e6b600;
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .quick-info {
-
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .programme-grid,
-  .contact-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-  .resource-grid {
-
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 650px) {
-
-  .department-hero {
-
-    padding: 55px 18px 90px;
-  }
-
-  .department-main {
-
-    width: min(100% - 28px, 1150px);
-  }
-
-  .department-hero h1 {
-
-    font-size: 38px;
-  }
-
-  .department-hero-description {
-
-    font-size: 15px;
-  }
-
-  .department-actions {
-
-    flex-direction: column;
-  }
-
-  .department-action {
-
-    width: 100%;
-  }
-
-  .quick-info {
-
-    grid-template-columns: 1fr;
-  }
-
-  .resource-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-  .course-row {
-
-    grid-template-columns: 1fr;
-
-    gap: 6px;
-  }
-
-  .course-unit {
-
-    text-align: left;
-  }
-
-  .about-box,
-  .programme-card,
-  .resource-card,
-  .contact-card {
-
-    padding: 22px;
-  }
-}
-
+    radial-gradient(circle at 82% 18%,rgba(245,197,24,.16),transparent 28%),
+    linear-gradient(135deg,#07120d 0%,var(--dark-green) 48%,var(--green) 100%);
+  color:#fff;padding:58px 22px 50px;border-radius:30px;margin:18px 22px 0;
+  box-shadow:0 18px 50px rgba(6,59,38,.14);
+}
+.department-hero::after{
+  content:"BIO";position:absolute;right:22px;bottom:-25px;
+  font-size:clamp(5rem,15vw,11rem);line-height:.8;font-weight:800;
+  letter-spacing:-7px;color:rgba(255,255,255,.035);pointer-events:none;
+}
+.department-hero-content{position:relative;max-width:900px;margin:auto;text-align:center;z-index:2}
+.breadcrumb{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:22px;color:rgba(255,255,255,.62);font-size:.67rem;font-weight:600}
+.breadcrumb a{color:rgba(255,255,255,.86)}
+.breadcrumb a:hover{color:var(--yellow)}
+.department-label{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  border:1px solid rgba(245,197,24,.35);border-radius:999px;
+  background:rgba(245,197,24,.08);color:var(--yellow);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase
+}
+.department-label::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--yellow)}
+.department-hero h1{margin:16px auto 0;max-width:900px;color:#fff;font-size:clamp(2.35rem,5.7vw,4.35rem);line-height:1;letter-spacing:-2.5px;font-weight:800}
+.department-hero h1 span{color:var(--yellow)}
+.faculty-name{margin:19px 0 0;color:var(--yellow);font-size:.9rem;font-weight:800}
+.department-hero-description{max-width:700px;margin:15px auto 0;color:rgba(255,255,255,.72);font-size:.82rem;line-height:1.7}
+.department-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:23px}
+.department-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 15px;border-radius:999px;font-size:.67rem;font-weight:800;transition:.2s ease}
+.department-action:hover{transform:translateY(-2px)}
+.department-action.primary{background:var(--yellow);color:var(--dark-green)}
+.department-action.secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff}
+
+/* MAIN */
+.department-main{width:min(1120px,calc(100% - 44px));margin:0 auto;padding:42px 0 70px}
+.quick-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:70px}
+.quick-card,.content-card,.programme-card,.resource-card,.contact-card,.table-card,.rule-card{
+  background:#fff;border:1px solid var(--border);border-radius:20px;
+  box-shadow:0 12px 35px rgba(6,59,38,.05)
+}
+.quick-card{min-height:125px;padding:19px;transition:.2s ease}
+.quick-card:hover,.programme-card:hover,.resource-card:hover{transform:translateY(-3px);border-color:rgba(11,93,59,.25)}
+.quick-icon,.programme-icon,.resource-icon{
+  width:42px;height:42px;display:grid;place-items:center;margin-bottom:12px;
+  border-radius:13px;background:var(--light-green);font-size:18px
+}
+.quick-card span,.mini-label{
+  display:block;margin-bottom:6px;color:var(--muted);font-size:.61rem;
+  font-weight:800;letter-spacing:.06em;text-transform:uppercase
+}
+.quick-card strong{display:block;color:var(--text);font-size:.78rem;line-height:1.45}
+
+.department-section{margin-bottom:70px;scroll-margin-top:30px}
+.section-heading{margin-bottom:23px}
+.section-heading span{display:block;margin-bottom:7px;color:var(--green);font-size:.64rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase}
+.section-heading h2{margin:0;color:var(--text);font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.05;letter-spacing:-1.2px}
+.section-heading p{margin:9px 0 0;color:var(--muted);font-size:.8rem;line-height:1.6}
+
+.about-box{padding:28px}
+.about-box p{margin:0 0 17px;color:var(--muted);font-size:.84rem;line-height:1.85}
+.about-box p:last-child{margin-bottom:0}
+.location-button,.action-button,.download-button,.upload-button,.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:40px;padding:0 15px;border-radius:11px;font-size:.68rem;font-weight:800;
+  border:0;cursor:pointer;transition:.2s ease
+}
+.location-button,.download-button{background:var(--green);color:#fff}
+.location-button:hover,.download-button:hover{background:var(--dark-green);transform:translateY(-2px)}
+.upload-button{background:var(--yellow);color:var(--dark-green)}
+.whatsapp-button{background:var(--light-green);color:var(--green)}
+.upload-status{margin:9px 0 0;color:var(--muted);font-size:.7rem;line-height:1.5}
+
+.programme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.programme-card{padding:24px;transition:.2s ease}
+.programme-icon{width:48px;height:48px;font-size:21px}
+.programme-card h3{margin:0 0 9px;color:var(--text);font-size:.98rem;line-height:1.45}
+.programme-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* INFORMATION CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.content-card{padding:24px}
+.content-card h3{margin:0 0 12px;font-size:1rem}
+.content-card p,.content-card li{color:var(--muted);font-size:.79rem;line-height:1.75}
+.content-card ul,.content-card ol{margin:0;padding-left:20px}
+.content-card li{margin-bottom:6px}
+.content-card li:last-child{margin-bottom:0}
+.full-card{grid-column:1/-1}
+
+/* COURSE STRUCTURE */
+.level-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.level-nav a{padding:9px 13px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.68rem;font-weight:800}
+.level-nav a:hover{background:var(--yellow);color:var(--dark-green)}
+
+.course-block{margin-bottom:18px}
+.course-block:last-child{margin-bottom:0}
+.course-block h3{margin:0 0 10px;color:var(--green);font-size:.92rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:#fff}
+.course-table{width:100%;border-collapse:collapse;min-width:760px}
+.course-table th,.course-table td{padding:10px 11px;border-bottom:1px solid var(--border);text-align:left;font-size:.69rem;vertical-align:top}
+.course-table th{background:var(--light-green);color:var(--green);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase}
+.course-table td:first-child{font-weight:800;color:var(--green);white-space:nowrap}
+.course-table tr:last-child td{border-bottom:0}
+.course-table .total-row td{font-weight:800;background:#fbfdfb;color:var(--text)}
+.note{margin:10px 0 0;color:var(--muted);font-size:.7rem;line-height:1.65}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.summary-card{padding:24px;background:#fff;border:1px solid var(--border);border-radius:20px}
+.summary-card h3{margin:0 0 15px;font-size:.95rem}
+.summary-stat{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.74rem}
+.summary-stat:last-child{border-bottom:0}
+.summary-stat span{color:var(--muted)}
+.summary-stat strong{color:var(--green)}
+
+/* RESOURCES */
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-card{display:block;padding:24px;transition:.2s ease}
+.resource-icon{width:48px;height:48px;font-size:21px}
+.resource-card h3{margin:0 0 8px;font-size:.96rem}
+.resource-card p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.7}
+.resource-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.file-input{display:none}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contact-card{padding:25px}
+.contact-card h3{margin:0 0 21px;font-size:.98rem}
+.contact-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:17px}
+.contact-item:last-child{margin-bottom:0}
+.contact-item-icon{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:11px;background:var(--light-green);font-size:17px}
+.contact-item span{display:block;margin-bottom:4px;color:var(--muted);font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.contact-item strong{color:var(--text);font-size:.78rem;line-height:1.5}
+
+/* HELP */
+.help-box{padding:40px 25px;border-radius:24px;background:radial-gradient(circle at 85% 15%,rgba(245,197,24,.13),transparent 28%),var(--dark-green);color:#fff;text-align:center}
+.help-box h2{margin:0 0 11px;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:-.8px}
+.help-box p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.74);font-size:.8rem;line-height:1.7}
+.help-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;background:var(--yellow);color:var(--dark-green);font-size:.7rem;font-weight:800}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border)}
+
+@media(max-width:950px){
+  .quick-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid,.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .programme-grid,.contact-grid,.info-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .department-hero{padding:40px 17px 36px;margin:12px 14px 0;border-radius:24px}
+  .department-hero h1{font-size:2.65rem;letter-spacing:-1.8px}
+  .department-main{width:min(100% - 34px,1120px);padding-top:35px}
+  .quick-info{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:55px}
+  .quick-card{min-height:112px;padding:16px}
+  .resource-grid,.summary-grid{grid-template-columns:1fr}
+  .about-box,.programme-card,.resource-card,.contact-card,.content-card,.summary-card{padding:21px}
+  .department-actions{gap:7px}
+  .department-action{min-height:38px;padding:0 13px}
+}
+@media(max-width:430px){.quick-info{grid-template-columns:1fr}.breadcrumb{font-size:.6rem}}
+
+.staff-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:12px 16px;border:0;border-radius:11px;background:var(--green);color:#fff;font:800 .75rem Manrope,Arial,sans-serif;cursor:pointer}
+.staff-toggle:hover{background:var(--dark-green)}
+.staff-list[hidden]{display:none}
+.staff-list{margin-top:16px}
+.staff-person{padding:15px 0;border-bottom:1px solid var(--border)}
+.staff-person:last-child{border-bottom:0}
+.staff-person h4{margin:0 0 5px;font-size:.82rem;color:var(--green)}
+.staff-person p{margin:3px 0;font-size:.73rem;line-height:1.6;color:var(--muted)}
+.badge{display:inline-block;margin-left:6px;padding:3px 7px;border-radius:999px;background:var(--light-green);color:var(--green);font-size:.6rem;font-weight:800}
+
+
+/* COLLAPSIBLE COURSE LEVELS */
+.level-dropdowns{display:grid;gap:12px;margin-top:8px}
+.level-dropdown,.semester-dropdown{border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden}
+.level-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;background:var(--light-green);color:var(--green);font-size:.9rem;font-weight:900;cursor:pointer;list-style:none}
+.level-summary::-webkit-details-marker,.semester-dropdown summary::-webkit-details-marker{display:none}
+.level-summary::after,.semester-dropdown summary::after{content:'＋';font-size:1.05rem;font-weight:900}
+.level-dropdown[open]>.level-summary::after,.semester-dropdown[open]>summary::after{content:'−'}
+.dropdown-hint{margin-left:auto;color:var(--muted);font-size:.68rem;font-weight:600}
+.semester-dropdown{margin:12px;border-radius:12px}
+.semester-dropdown summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;color:var(--text);font-size:.78rem;font-weight:800;cursor:pointer;list-style:none}
+.semester-dropdown[open] summary{border-bottom:1px solid var(--border)}
+.semester-dropdown .table-wrap{border:0;border-radius:0}
+.pdf-resource-card{border:1px solid rgba(11,93,59,.18)}
+.download-button{border-radius:999px;padding:0 18px;text-decoration:none}
+@media(max-width:600px){.level-summary{align-items:flex-start;flex-direction:column}.dropdown-hint{margin-left:0}.semester-dropdown{margin:8px}}
+
+.clean-list{padding-left:20px;margin:8px 0}.clean-list li{margin:5px 0;line-height:1.7;color:var(--muted);font-size:.82rem}.course-level{margin:0 0 22px;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden}.course-level-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;background:linear-gradient(90deg,rgba(11,93,59,.09),rgba(245,197,24,.08));border-bottom:1px solid var(--border)}.course-level-header h3{margin:0;color:var(--text);font-size:1rem}.unit-pill{font-size:.68rem;font-weight:800;background:var(--green);color:#fff;padding:6px 10px;border-radius:999px}.status{display:inline-block;border-radius:999px;padding:4px 7px;font-size:.62rem;font-weight:800}.status.compulsory{background:rgba(11,93,59,.12);color:var(--green)}.status.elective{background:rgba(245,197,24,.2);color:#785e00}.level-dropdowns{display:grid;gap:12px;margin-top:8px}.level-dropdown{border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden;margin:0 0 14px}.level-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;background:var(--light-green);color:var(--green);font-size:.9rem;font-weight:900;cursor:pointer;list-style:none}.level-summary::-webkit-details-marker{display:none}.level-summary::after{content:'＋';font-size:1.05rem;font-weight:900}.level-dropdown[open]>.level-summary::after{content:'−'}.dropdown-hint{margin-left:auto;color:var(--muted);font-size:.68rem;font-weight:600}.level-dropdown .course-level{margin:0;border:0;border-top:1px solid var(--border);border-radius:0}.level-dropdown .course-level-header{border-radius:0}.level-dropdown .note{margin:12px}.staff-feature,.staff-person{padding:17px;border:1px solid var(--border);border-radius:16px;background:#fff;margin-bottom:12px}.staff-feature h3,.staff-person h4{color:var(--text);margin:0 0 8px}.staff-feature p,.staff-person p{font-size:.78rem;line-height:1.65;color:var(--muted);margin:5px 0}.staff-details{margin:12px 0;border:1px solid var(--border);border-radius:14px;background:#fff;overflow:hidden}.staff-details summary{cursor:pointer;padding:14px 16px;background:var(--green);color:white;font-size:.78rem;font-weight:800;list-style:none}.staff-details summary::-webkit-details-marker{display:none}.staff-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}.staff-list .staff-person{margin:0}.coming-soon{display:inline-block;padding:7px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--border);font-size:.68rem;font-weight:800;color:var(--muted)}html[data-theme="dark"] .course-level,html[data-theme="dark"] .staff-feature,html[data-theme="dark"] .staff-person,html[data-theme="dark"] .staff-details,html[data-theme="dark"] .level-dropdown{background:rgba(13,20,17,.94);border-color:rgba(130,164,144,.22)}html[data-theme="dark"] .course-level-header,html[data-theme="dark"] .course-table th,html[data-theme="dark"] .level-summary{background:rgba(20,34,27,.9)}html[data-theme="dark"] .course-level-header h3,html[data-theme="dark"] .course-table th,html[data-theme="dark"] .course-table td:first-child,html[data-theme="dark"] .staff-feature h3,html[data-theme="dark"] .staff-person h4,html[data-theme="dark"] .level-summary{color:#f4f8f5}html[data-theme="dark"] .course-table td,html[data-theme="dark"] .staff-feature p,html[data-theme="dark"] .staff-person p,html[data-theme="dark"] .clean-list li{color:#b7c5bc}html[data-theme="dark"] .status.compulsory{background:rgba(61,174,112,.18);color:#91e9b6}html[data-theme="dark"] .status.elective{background:rgba(245,197,24,.16);color:#f5d96b}@media(max-width:650px){.course-level-header{align-items:flex-start;flex-direction:column}.staff-list{grid-template-columns:1fr}.course-table{font-size:.72rem}.level-summary{align-items:flex-start;flex-direction:column}.dropdown-hint{margin-left:0}}
 </style>
-
+<style>
+/* Compact academic regulations: prevent horizontal page overflow on phones. */
+.academic-regulations{width:100%;max-width:100%;min-width:0;overflow:hidden}
+.academic-regulations .regulations-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;min-width:0}
+.academic-regulations .regulations-card{padding:12px;min-width:0;max-width:100%;overflow:hidden}
+.academic-regulations .regulations-card.assessment-card{grid-column:1/-1}
+.academic-regulations .regulations-card h3{font-size:.82rem;line-height:1.25;margin:0 0 8px;overflow-wrap:anywhere}
+.academic-regulations .regulations-card p{font-size:.76rem;line-height:1.55;margin:0}
+.academic-regulations .grading-table-wrap{width:100%;max-width:100%;overflow:hidden;border:1px solid var(--border);border-radius:10px}
+.academic-regulations .grading-table{width:100%;max-width:100%;table-layout:fixed;border-collapse:collapse}
+.academic-regulations .grading-table th,.academic-regulations .grading-table td{padding:6px 2px;text-align:center;font-size:.72rem;line-height:1.2;overflow-wrap:anywhere;border-bottom:1px solid var(--border)}
+.academic-regulations .grading-table th{background:var(--light-green);color:var(--green);font-size:.63rem}
+.academic-regulations .grading-table tr:last-child td{border-bottom:0}
+.academic-regulations .classification-row{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:7px 0;border-bottom:1px solid var(--border);font-size:.69rem;line-height:1.25;min-width:0}
+.academic-regulations .classification-row:last-child{border-bottom:0}
+.academic-regulations .classification-row span{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.academic-regulations .classification-row strong{font-size:.74rem;color:var(--green);white-space:normal;overflow-wrap:anywhere}
+@media(max-width:360px){.academic-regulations .regulations-grid{gap:7px}.academic-regulations .regulations-card{padding:9px}.academic-regulations .regulations-card h3{font-size:.75rem}.academic-regulations .grading-table th,.academic-regulations .grading-table td{font-size:.66rem;padding:5px 1px}.academic-regulations .classification-row{font-size:.64rem}.academic-regulations .classification-row strong{font-size:.68rem}}
+</style>
   <link rel="stylesheet" href="site-navigation.css">
 </head>
-
-
-<body>
-
-
-<div class="department-page">
-
-
-<!-- =====================================================
-     HERO
-====================================================== -->
-
-<section class="department-hero">
-
-<div class="department-hero-content">
-
-
-<div class="breadcrumb">
-
-<a href="index.html">
-Home
-</a>
-
-<span>›</span>
-
-<a href="faculty-guide.html">
-Faculty Guide
-</a>
-
-<span>›</span>
-
-<a href="allied-health-sciences.html">
-Faculty of Allied Health Sciences
-</a>
-
-<span>›</span>
-
-<span>
-Nursing Science
-</span>
-
-</div>
-
-
-<span class="department-label">
-Department Guide
-</span>
-
-
-<h1>
-Nursing Science
-</h1>
-
-
-<p class="faculty-name">
-Faculty of Allied Health Sciences
-</p>
-
-
-<p class="department-hero-description">
-
-Welcome to the Department of Nursing Science in the Faculty of
-Allied Health Sciences at Adekunle Ajasin University. Explore
-the nursing programme, academic resources and departmental
-information in one place.
-
-</p>
-
-
-<div class="department-actions">
-
-<a href="#resources" class="department-action primary">
-📚 Resources
-</a>
-
-<a href="#courses" class="department-action secondary">
-📋 Courses
-</a>
-
-<a href="#help" class="department-action secondary">
-🆘 Get Help
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
+<body class="department-page">
+<section class="department-hero"><div class="department-hero-content"><div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="faculty-guide.html">Faculty Guide</a><span>›</span><a href="allied-health-sciences.html">Faculty of Allied Health Sciences</a><span>›</span><span>Nursing Science</span></div><span class="department-label">DEPARTMENT OF NURSING SCIENCE</span><h1>Nursing Science</h1><p class="hero-description">A guide to the B.N.Sc. programme, admission pathways, academic regulations and curriculum at Adekunle Ajasin University.</p><div class="hero-meta"><span>🎓 B.N.Sc. Nursing Science</span><span>📍 Akungba-Akoko, Ondo State</span></div></div></section>
 <main class="department-main">
-
-
-<!-- QUICK INFORMATION -->
-
-<section class="quick-info">
-
-
-<div class="quick-card">
-
-<div class="quick-icon">
-🏛️
-</div>
-
-<span>
-Faculty
-</span>
-
-<strong>
-Faculty of Allied Health Sciences
-</strong>
-
-</div>
-
-
-<div class="quick-card">
-
-<div class="quick-icon">
-👨‍🏫
-</div>
-
-<span>
-Head of Department
-</span>
-
-<strong>
-Information coming soon
-</strong>
-
-</div>
-
-
-<div class="quick-card">
-
-<div class="quick-icon">
-🎓
-</div>
-
-<span>
-Degree
-</span>
-
-<strong>
-B.NSc. — Bachelor of Nursing Science
-</strong>
-
-</div>
-
-
-<div class="quick-card">
-
-<div class="quick-icon">
-⏳
-</div>
-
-<span>
-Duration
-</span>
-
-<strong>
-5 Years
-</strong>
-
-</div>
-
-
-</section>
-
-
-
-<!-- ===================================================
-     ABOUT
-=================================================== -->
-
-<section class="department-section">
-
-<div class="section-heading">
-
-<span>
-About the Department
-</span>
-
-<h2>
-Nursing Science
-</h2>
-
-</div>
-
-
-<div class="about-box">
-
-<p>
-
-The Department of Nursing Science is part of the Faculty of
-Allied Health Sciences at Adekunle Ajasin University,
-Akungba-Akoko, Ondo State, Nigeria.
-
-The Faculty of Allied Health Sciences was established in July
-2024 by the Senate of Adekunle Ajasin University with the
-approval of the National Universities Commission (NUC).
-
-The Nursing Science programme is designed to train nurses with
-the academic knowledge and practical experience needed for
-professional healthcare practice.
-
-Students are prepared to contribute effectively to healthcare
-delivery while developing the knowledge, skills and professional
-competence required in the nursing profession.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- ===================================================
-     PROGRAMMES
-=================================================== -->
-
-<section class="department-section">
-
-<div class="section-heading">
-
-<span>
-Academic Programme
-</span>
-
-<h2>
-Programme & Admission
-</h2>
-
-</div>
-
-
-<div class="programme-grid">
-
-
-<div class="programme-card">
-
-<div class="programme-icon">
-🎓
-</div>
-
-<h3>
-Bachelor of Nursing Science (B.NSc.)
-</h3>
-
-<p>
-
-The undergraduate Nursing Science programme leading to the
-Bachelor of Nursing Science degree.
-
-</p>
-
-</div>
-
-
-
-<div class="programme-card">
-
-<div class="programme-icon">
-🩺
-</div>
-
-<h3>
-Nursing Science
-</h3>
-
-<p>
-
-Training in nursing knowledge, practical skills and
-professional healthcare practice.
-
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ===================================================
-     COURSES
-=================================================== -->
-
-<section class="department-section" id="courses">
-
-<div class="section-heading">
-
-<span>
-Academic Information
-</span>
-
-<h2>
-Courses by Level
-</h2>
-
-</div>
-
-
-<div class="courses-box">
-
-
-<!-- 100 LEVEL -->
-
-<div class="level-card">
-
-<button class="level-button" type="button">
-
-<span>
-100 Level
-</span>
-
-<span class="level-arrow">
-▼
-</span>
-
-</button>
-
-
-<div class="course-list">
-
-<div class="course-row">
-
-<span class="course-code">
-Course Information
-</span>
-
-<span>
-Official 100 Level Nursing Science course list will be added when available.
-</span>
-
-<span class="course-unit">
-—
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- 200 LEVEL -->
-
-<div class="level-card">
-
-<button class="level-button" type="button">
-
-<span>
-200 Level
-</span>
-
-<span class="level-arrow">
-▼
-</span>
-
-</button>
-
-
-<div class="course-list">
-
-<div class="course-row">
-
-<span class="course-code">
-Course Information
-</span>
-
-<span>
-Official 200 Level Nursing Science course list will be added when available.
-</span>
-
-<span class="course-unit">
-—
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- 300 LEVEL -->
-
-<div class="level-card">
-
-<button class="level-button" type="button">
-
-<span>
-300 Level
-</span>
-
-<span class="level-arrow">
-▼
-</span>
-
-</button>
-
-
-<div class="course-list">
-
-<div class="course-row">
-
-<span class="course-code">
-Course Information
-</span>
-
-<span>
-Official 300 Level Nursing Science course list will be added when available.
-</span>
-
-<span class="course-unit">
-—
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- 400 LEVEL -->
-
-<div class="level-card">
-
-<button class="level-button" type="button">
-
-<span>
-400 Level
-</span>
-
-<span class="level-arrow">
-▼
-</span>
-
-</button>
-
-
-<div class="course-list">
-
-<div class="course-row">
-
-<span class="course-code">
-Course Information
-</span>
-
-<span>
-Official 400 Level Nursing Science course list will be added when available.
-</span>
-
-<span class="course-unit">
-—
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ===================================================
-     RESOURCES
-=================================================== -->
-
-<section class="department-section" id="resources">
-
-<div class="section-heading">
-
-<span>
-Student Support
-</span>
-
-<h2>
-Academic Resources
-</h2>
-
-</div>
-
-
-<div class="resource-grid">
-
-
-<a href="#" class="resource-card">
-
-<div class="resource-icon">
-📖
-</div>
-
-<h3>
-Department Guide
-</h3>
-
-<p>
-
-Find useful information about the Department of Nursing
-Science and your academic programme.
-
-</p>
-
-</a>
-
-
-
-<a href="#" class="resource-card">
-
-<div class="resource-icon">
-📝
-</div>
-
-<h3>
-Course Information
-</h3>
-
-<p>
-
-Access information about Nursing Science courses and
-academic levels.
-
-</p>
-
-</a>
-
-
-
-<a href="#" class="resource-card">
-
-<div class="resource-icon">
-🎓
-</div>
-
-<h3>
-Student Resources
-</h3>
-
-<p>
-
-Useful academic materials and information for Nursing
-Science students.
-
-</p>
-
-</a>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ===================================================
-     CONTACT
-=================================================== -->
-
-<section class="department-section">
-
-<div class="section-heading">
-
-<span>
-Get in Touch
-</span>
-
-<h2>
-Department Contacts
-</h2>
-
-</div>
-
-
-<div class="contact-grid">
-
-
-<div class="contact-card">
-
-<h3>
-Department Information
-</h3>
-
-
-<div class="contact-item">
-
-<div class="contact-item-icon">
-🏛️
-</div>
-
-<div>
-
-<span>
-Faculty
-</span>
-
-<strong>
-Faculty of Allied Health Sciences
-</strong>
-
-</div>
-
-</div>
-
-
-<div class="contact-item">
-
-<div class="contact-item-icon">
-🎓
-</div>
-
-<div>
-
-<span>
-Department
-</span>
-
-<strong>
-Nursing Science
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="contact-card">
-
-<h3>
-University
-</h3>
-
-
-<div class="contact-item">
-
-<div class="contact-item-icon">
-📍
-</div>
-
-<div>
-
-<span>
-Location
-</span>
-
-<strong>
-
-Adekunle Ajasin University,
-Akungba-Akoko, Ondo State
-
-</strong>
-
-</div>
-
-</div>
-
-
-<div class="contact-item">
-
-<div class="contact-item-icon">
-🏫
-</div>
-
-<div>
-
-<span>
-Faculty
-</span>
-
-<strong>
-Faculty of Allied Health Sciences
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- ===================================================
-     HELP
-=================================================== -->
-
-<section class="department-section" id="help">
-
-<div class="help-box">
-
-<h2>
-Need help with your department?
-</h2>
-
-<p>
-
-If you need help with registration, courses,
-departmental information or other student matters,
-use the Uni Pilot student help system.
-
-</p>
-
-<a href="help.html" class="help-button">
-Get Help
-</a>
-
-</div>
-
-</section>
-
-
-</main>
-
-</div>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
+<section class="quick-info"><div class="quick-card"><div class="quick-icon">🏛️</div><span>Faculty</span><strong>Faculty of Allied Health Sciences</strong></div><div class="quick-card"><div class="quick-icon">👩‍⚕️</div><span>Head of Department</span><strong>To be confirmed</strong></div><div class="quick-card"><div class="quick-icon">🎓</div><span>Degree programme</span><strong>B.N.Sc. Nursing Science</strong></div><div class="quick-card"><div class="quick-icon">⏳</div><span>Duration</span><strong>5 years UTME · 4 years Direct Entry</strong></div></section>
+<section class="department-section" id="overview"><div class="section-heading"><span>WELCOME &amp; BACKGROUND</span><h2>About the Department</h2><p>Summarised from the Nursing Science handbook extracts supplied for this page.</p></div><div class="content-card"><p><strong>Welcome to the Department of Nursing Science.</strong> This handbook guide supports undergraduate students as they navigate the B.N.Sc. Nursing Science curriculum, academic procedures and university regulations.</p><p>The generic programme is designed to prepare independent professional nurses who can work effectively within interdisciplinary healthcare teams. It responds to changing disease patterns in Nigeria and across Africa, building competence in clinical care, patient safety and health-facility management.</p><p><strong>Programme philosophy:</strong> Nursing views people as biopsychosocial beings whose needs guide health-related activities. It combines nursing science with life, social and behavioural sciences to support clients through evidence-based practice across primary, secondary and tertiary care.</p></div></section>
+<section class="department-section" id="objectives"><div class="section-heading"><span>LEARNING &amp; DEVELOPMENT</span><h2>Programme Objectives &amp; Skills</h2></div><div class="content-card"><ul class="clean-list"><li>Develop nurses who communicate effectively, evaluate values and apply evidence-based healthcare actions.</li><li>Prepare polyvalent nurses to provide therapeutic care across diverse clinical and community settings.</li><li>Support individuals, families and communities from varied backgrounds and with different health needs.</li><li>Promote optimal health while protecting client safety.</li><li>Connect healthcare delivery to wider social systems and encourage lifelong learning.</li><li>Build effective teamwork and communication using current educational technologies and research-informed management strategies.</li><li>Encourage research-led innovation in clinical education, practice and administration.</li></ul><div class="info-grid"><div class="content-card"><strong>Distinctive programme features</strong><ul class="clean-list"><li>Clinical and community-based learning.</li><li>Professional development, leadership and management skills.</li><li>Quality improvement, problem-solving and workplace adaptability.</li><li>Interdisciplinary teamwork and evidence-informed care.</li></ul></div><div class="content-card"><strong>Professional examinations</strong><p>The supplied handbook summary indicates UTME entrants sit professional nursing certificate examinations at 400 level. Post-basic midwifery or related professional examinations are indicated at 500 level alongside Direct Entry students. Confirm current examination arrangements with the department and relevant professional regulator.</p></div></div></div></section>
+<section class="department-section"><div class="section-heading"><span>PROGRAMME OFFERED &amp; DURATION</span><h2>Degree Programme</h2><p>Programme details transcribed from the supplied handbook summary.</p></div><div class="programme-grid"><div class="programme-card"><div class="programme-icon">🩺</div><h3>B.N.Sc. Nursing Science</h3><p>A generic undergraduate nursing programme focused on professional clinical care, health promotion, patient safety, research and healthcare teamwork.</p></div><div class="programme-card"><div class="programme-icon">⏳</div><h3>Normal Duration</h3><p>Five years (10 semesters) for UTME entrants and four years (8 semesters) for eligible Direct Entry entrants, subject to current university regulations.</p></div></div></section><section class="department-section" id="admission"><div class="section-heading"><span>ENTRY REQUIREMENTS</span><h2>Admission Requirements</h2><p>Use this as a guide only; confirm the current year's requirements and cut-off with AAUA Admissions.</p></div><div class="info-grid"><div class="content-card"><h3>UTME · 100 Level</h3><p>Applicants normally apply through JAMB and must meet the current department-specific UTME cut-off, which the supplied handbook says cannot be below 180. Five SSC/SSCE or equivalent credit passes in no more than two sittings are required, including English Language, Mathematics, Physics, Chemistry and Biology.</p></div><div class="content-card"><h3>Direct Entry · 200 Level</h3><p>Eligible candidates may include applicants with at least two relevant Advanced Level passes plus required O/L credits; diploma holders with an upper-credit pass and the required O/L qualifications; and Registered Nurse (RN) or Registered Midwife (RM) certificate holders who also meet the stated academic requirements. The handbook summary describes a four-year route.</p></div><div class="content-card"><h3>Pre-degree route</h3><p>Admission may also be considered through the university's pre-degree programme for candidates who meet O/L requirements and attain the required programme results. Availability and progression rules should be confirmed for the current admission cycle.</p></div><div class="content-card"><h3>Pass mark &amp; degree type</h3><p>The supplied handbook summary states a 50% pass mark for core courses and describes the degree as unclassified. This differs from the general CGPA classification table in the same supplied notes; verify the applicable Nursing Science regulations before relying on either statement.</p></div></div></section>
+<section class="department-section academic-regulations" id="grading"><div class="section-heading"><span>ACADEMIC REGULATIONS</span><h2>Examination, Grading &amp; Degree Classification</h2><p>Rules below reflect the supplied handbook extracts; confirm current departmental regulations where statements conflict.</p></div><div class="info-grid"><div class="content-card"><h3>Assessment</h3><p>Continuous assessment may include tests, written assignments and reports set by departments. The supplied handbook indicates continuous assessment contributes 20–30% of the total mark, with the final examination contributing the remainder. Semester examinations typically last one to three hours. The handbook summary says re-sit examinations are not permitted.</p></div><div class="content-card"><h3>Grading System</h3><table class="course-table"><thead><tr><th>Mark</th><th>Grade</th><th>Grade Points</th></tr></thead><tbody><tr><td>70–100%</td><td>A</td><td>5</td></tr><tr><td>60–69%</td><td>B</td><td>4</td></tr><tr><td>50–59%</td><td>C</td><td>3</td></tr><tr><td>45–49%</td><td>D</td><td>2</td></tr><tr><td>40–44%</td><td>E</td><td>1</td></tr><tr><td>0–39%</td><td>F</td><td>0</td></tr></tbody></table></div><div class="content-card"><h3>Academic standing</h3><p>The handbook summary states a minimum CGPA of 1.0 for good standing, or 1.5 for students admitted from 2013 onward. It describes a warning (WN) for a first low-CGPA instance, first probation (P1st) after two consecutive semesters, and second probation (P2) after three consecutive semesters. Students required to withdraw are said to need admission into another faculty or department within four weeks of notice.</p></div><div class="content-card"><h3>CGPA &amp; classification notes</h3><p>CGPA is calculated by multiplying each course's grade points by its units, summing the weighted scores and dividing by total units taken.</p><table class="course-table"><thead><tr><th>CGPA</th><th>Classification</th></tr></thead><tbody><tr><td>4.50–5.00</td><td>First Class Honours</td></tr><tr><td>3.50–4.49</td><td>Second Class Honours, Upper Division</td></tr><tr><td>2.40–3.49</td><td>Second Class Honours, Lower Division</td></tr><tr><td>1.50–2.39</td><td>Third Class Honours</td></tr><tr><td>Below 1.50</td><td>Fail (as transcribed; boundary needs confirmation)</td></tr></tbody></table><p class="note">The handbook summary also describes the B.N.Sc. as unclassified. These two descriptions conflict; check the approved current Nursing Science regulations.</p></div></div></section><section class="department-section" id="courses"><div class="section-heading"><span>COURSE CATALOGUE · HANDBOOK EXTRACT</span><h2>Course Structure by Level</h2><p>Course codes, titles, units, status and contact hours below are transcribed from the information supplied. The handbook tables contain possible duplicated codes and totals that should be checked against the original pages.</p></div><div class="content-card"><h3>How to read the course tables</h3><ul class="clean-list"><li><strong>Course codes:</strong> the three-letter prefix identifies the teaching unit; the first digit in the number generally indicates the academic level.</li><li><strong>C — Compulsory:</strong> mandatory departmental courses.</li><li><strong>R — Required:</strong> general university-wide core courses.</li><li><strong>E — Elective:</strong> a course selected to satisfy programme unit requirements.</li><li><strong>Pre-requisite:</strong> a preliminary course; the supplied handbook summary states a minimum 35% score before registering for a dependent course.</li><li><strong>LH / PH:</strong> lecture hours / practical hours. A dash means no hours were listed in the supplied extract; an asterisk is retained where the extract used one.</li></ul><p class="note">Course selection must follow the approved semester prospectus and advice from the academic adviser or Head of Department. The handbook summary says course changes and programme transfers must follow official procedures, with programme changes generally restricted to the first three weeks and 100/200 levels.</p></div></section></details><details class="level-dropdown"><summary class="level-summary">200 Level<span class="dropdown-hint">Tap to view courses</span></summary><section class="course-level"><div class="course-level-header"><h3>100 Level · First Semester</h3><span class="unit-pill">16 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 111</td><td>Communication in English I</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>BIO 101</td><td>General Biology I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 107</td><td>General Biology Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 101</td><td>General Chemistry I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 107</td><td>General Chemistry Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>MTH 101</td><td>Elementary Mathematics</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CSC 101</td><td>Introduction to Computing Science</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>PHY 101</td><td>General Physics I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 107</td><td>General Physics Practical I</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>16</th><td colspan="3"></td></tr></tbody></table></div></section></details><details class="level-dropdown"><summary class="level-summary">300 Level<span class="dropdown-hint">Tap to view courses</span></summary><section class="course-level"><div class="course-level-header"><h3>100 Level · Second Semester</h3><span class="unit-pill">17 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 112</td><td>Nigerian Peoples and Culture</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 102</td><td>General Biology II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BIO 108</td><td>General Biology Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>CHM 102</td><td>General Chemistry II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>CHM 108</td><td>General Chemistry Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>PHY 102</td><td>General Physics II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PHY 108</td><td>General Physics Practical II</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>AAUA-MCB 102</td><td>Laboratory Organisation and Management I</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>AAUA-MTH 102</td><td>Elementary Interval Analysis</td><td>3</td><td>E</td><td>45</td><td>—</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>17</th><td colspan="3"></td></tr></tbody></table></div></section></details><details class="level-dropdown"><summary class="level-summary">400 Level<span class="dropdown-hint">Tap to view courses</span></summary><section class="course-level"><div class="course-level-header"><h3>200 Level · First Semester</h3><span class="unit-pill">17 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>ENT 211</td><td>Entrepreneurship and Innovation</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>ANA 201</td><td>Anatomy of Upper and Lower Limb</td><td>3</td><td>C</td><td>30</td><td>45</td></tr><tr><td>ANA 203</td><td>General and Systemic Embryology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PIO 201</td><td>Introductory Physiology and Blood</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>BCH 201</td><td>Nursing Science – General and Medical I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 201</td><td>Foundation of Professional Nursing</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 203</td><td>Developmental Psychology Practice I</td><td>1</td><td>C</td><td>15</td><td>—</td></tr><tr><td>BCH 203</td><td>General Nursing Science Practical</td><td>1</td><td>C</td><td>—</td><td>45</td></tr><tr><td>NSC 202</td><td>Foundation of Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>17</th><td colspan="3"></td></tr></tbody></table></div></section></details></section>
+<section class="course-level"><div class="course-level-header"><h3>200 Level · Second Semester</h3><span class="unit-pill">14 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 212</td><td>Philosophy, Logic and Human Existence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>PIO 212</td><td>Renal and Body Fluids Physiology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>ANA 204</td><td>Anatomy of Thorax, Abdomen, Pelvis and Perineum</td><td>2</td><td>C</td><td>30</td><td>45</td></tr><tr><td>BCH 206</td><td>Nursing Science – General and Medical II</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 202</td><td>Foundation of Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 206</td><td>General and Cellular Pathology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 226</td><td>Infectious Diseases</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>14</th><td colspan="3"></td></tr></tbody></table></div></section><section class="course-level"><div class="course-level-header"><h3>300 Level · First Semester</h3><span class="unit-pill">15 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>PHA 301</td><td>Pharmacodynamics and Chemotherapy I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 301</td><td>Epidemiology</td><td>1</td><td>C</td><td>15</td><td>—</td></tr><tr><td>NSC 303</td><td>Community/Public Health Nursing I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 307</td><td>Human Nutrition</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 309</td><td>Nursing Ethics and Jurisprudence</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 313</td><td>Medical-Surgical Nursing I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>MLS 305</td><td>Basic Immunology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>MLS 309</td><td>Basic Medical Parasitology and Entomology</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>15</th><td colspan="3"></td></tr></tbody></table></div></section>
+<section class="course-level"><div class="course-level-header"><h3>300 Level · Second Semester</h3><span class="unit-pill">19 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>GST 312</td><td>Peace and Conflict Resolution</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>GST 312</td><td>Venture Creation</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 302</td><td>Community/Public Health Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 306</td><td>Medical-Surgical Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 308</td><td>Medical-Surgical Nursing III</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 312</td><td>Medical-Surgical Nursing II Practicum (SIWES)</td><td>2</td><td>C</td><td>—</td><td>90</td></tr><tr><td>NSC 314</td><td>Mental Health Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>PHA 302</td><td>Pharmacodynamics and Chemotherapy II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-NSC 321</td><td>Health Education</td><td>1</td><td>C</td><td>15</td><td>—</td></tr><tr><td>AAUA-NSC 326</td><td>Human Behaviour in Health and Illness</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>19</th><td colspan="3"></td></tr></tbody></table></div></section><section class="course-level"><div class="course-level-header"><h3>400 Level · First Semester</h3><span class="unit-pill">18 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>NSC 401</td><td>Medical-Surgical Nursing Practicum III</td><td>3</td><td>C</td><td>—</td><td>135</td></tr><tr><td>NSC 403</td><td>Maternal and Child Health I</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 405</td><td>Mental Health Nursing II</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>NSC 411</td><td>Biostatistics</td><td>1</td><td>C</td><td>15</td><td>—</td></tr><tr><td>NSC 407</td><td>Research Methodology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 409</td><td>Management of Nursing Services</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 423</td><td>Palliative Nursing Care</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 425</td><td>Work Environment</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 427</td><td>Evidence-Based Practice Nursing</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>18</th><td colspan="3"></td></tr></tbody></table></div></section><section class="course-level"><div class="course-level-header"><h3>400 Level · Second Semester</h3><span class="unit-pill">17 listed units</span></div><div class="table-wrapper"><table class="course-table"><thead><tr><th>Course Code</th><th>Course Title</th><th>Units</th><th>Status</th><th>LH</th><th>PH</th></tr></thead><tbody><tr><td>NSC 402</td><td>Maternal and Child Health Nursing II</td><td>2</td><td>C</td><td>15</td><td>—</td></tr><tr><td>NSC 404</td><td>Maternal and Child Health Nursing Practicum I</td><td>2</td><td>C</td><td>—</td><td>90</td></tr><tr><td>NSC 406</td><td>Curriculum Development and Teaching Methodology</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>NSC 410</td><td>Community/Public Health Nursing III</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 424</td><td>Reproductive and Adolescent Health</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-NSC 426</td><td>Therapeutic Nursing</td><td>2</td><td>C</td><td>30</td><td>—</td></tr><tr><td>AAUA-PHS 408</td><td>Public Health Data Management</td><td>2</td><td>C</td><td>15</td><td>45</td></tr><tr><td>AAUA-PHS 414</td><td>Public Health Information Communication (PIC)</td><td>3</td><td>C</td><td>15</td><td>45</td></tr><tr class="total-row"><th colspan="2">Total listed units</th><th>17</th><td colspan="3"></td></tr></tbody></table></div></section></main>
 <footer>
-
 <div class="footer-container">
-
-
 <div class="footer-brand">
-
-<h2>
-AAUA Uni Pilot
-</h2>
-
-<p>
-Your campus. Your resources. Your guide.
-</p>
-
+<a class="brand" href="index.html">🎓 Uni Pilot</a>
+<p>Your campus. Your resources. Your guide.</p>
 </div>
-
-
 <div class="footer-links">
-
-
 <div>
-
-<h4>
-Platform
-</h4>
-
-<a href="resources.html">
-Resources
-</a>
-
-<a href="guide.html">
-Student Guide
-</a>
-
-<a href="updates.html">
-Updates
-</a>
-
-<a href="tools.html">
-Student Tools
-</a>
-
+<h4>Platform</h4>
+<a href="resources.html">Resources</a>
+<a href="guide.html">Student Guide</a>
+<a href="updates.html">Updates</a>
+<a href="tools.html">Student Tools</a>
 </div>
-
-
 <div>
-
-<h4>
-Information
-</h4>
-
-<a href="about.html">
-About
-</a>
-
-<a href="#">
-Privacy Policy
-</a>
-
-<a href="#">
-Terms of Use
-</a>
-
-<a href="#">
-Contact
-</a>
-
+<h4>Information</h4>
+<a href="about.html">About</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Use</a>
+<a href="contact.html">Contact</a>
 </div>
-
-
 </div>
-
 </div>
-
-
-<div class="footer-bottom">
-
-<p>
-© 2026 AAUA Uni Pilot. All rights reserved.
-</p>
-
-</div>
-
+<div class="footer-bottom"><p>© 2026 Uni Pilot. All rights reserved.</p></div>
 </footer>
-
-
-
 <script>
-
-/* =========================================================
-   COURSE ACCORDION
-========================================================= */
-
-document.querySelectorAll(".level-button").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    const card =
-      button.closest(".level-card");
-
-    card.classList.toggle("active");
-
+const academicStaffToggle = document.getElementById('academicStaffToggle');
+const academicStaffList = document.getElementById('allAcademicStaff');
+if (academicStaffToggle && academicStaffList) {
+  academicStaffToggle.addEventListener('click', function () {
+    const isOpen = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!isOpen));
+    academicStaffList.hidden = isOpen;
+    this.textContent = isOpen ? '＋ View Remaining Lecturers' : '− Hide Remaining Lecturers';
   });
-
-});
-
+}
+const staffToggle = document.getElementById('staffToggle');
+const staffList = document.getElementById('allSupportStaff');
+if (staffToggle && staffList) {
+  staffToggle.addEventListener('click', function () {
+    const isOpen = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!isOpen));
+    staffList.hidden = isOpen;
+    this.textContent = isOpen ? '＋ View Technical & Administrative Staff' : '− Hide Technical & Administrative Staff';
+  });
+}
 </script>
-
-
   <script src="site-navigation.js"></script>
-</body>
-
-</html>
+</body></html>
